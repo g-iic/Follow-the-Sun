@@ -1,0 +1,21 @@
+template:
+    # kiosk mode
+    # the folowing parameters can be changed
+    # 250 W is the base comsumtion
+    # 3500 W is the solar production to charge at 12 A
+    # 12 A is the maximum current to charge
+    - sensor:
+      - name: "Charging Amps Kiosk"
+        unit_of_measurement: "A"
+        state: >
+          {% set  power = states('sensor.XXXXXXXXXX_realtime_power') | float %}
+          {% set m=(12/(3500 - 250)) %}
+          {% set b= -m*250 %}
+          {% set  amps = ((power *1000 * m) + b) | round(0) %} 
+            {% if  amps < 0 %}
+            {% set amps = 0 %}
+            {% endif %}
+            {% if amps > 12 %}
+            {% set amps = 12 %}
+            {% endif %}
+            {{ amps }}  
