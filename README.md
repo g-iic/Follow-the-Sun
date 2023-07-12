@@ -2,7 +2,7 @@
 Control Tesla charging using Home Assistant and Huawei inverter
 
 There are two ways to sense solar production when using Huawei inverters: using modbus or using the FusionSolar application.
-The first way provides production information almost instantaneously and can be managed by Home Assistant using the Huawei Solar Integration. The second way uses the Home Assistant FusionSolar Integration. This is simpler and does not use additional hardware but it has the inconvenience of using the Huawei servers and a considerable delay. As an advantage, this method provides solar production already filtered. 
+The first way provides production information almost instantaneously and can be managed by Home Assistant using the Huawei Solar Integration. The second way uses the Home Assistant FusionSolar Integration. This is simpler and does not use additional hardware but it has the inconvenience of using the Huawei servers and a considerable delay. As an advantage, this method provides the solar production data already filtered. 
 Here we describe the use of the second alternative. 
 The steps are the following:
 
