@@ -3,22 +3,22 @@ description: ""
 trigger:
   - platform: state
     entity_id:
-      - sensor.amperios_carga
+      - sensor.amperios_carga_kiosk
   - platform: state
     entity_id:
       - switch.followthesun
   - platform: state
     entity_id:
-      - binary_sensor.teslamovil_charger
+      - binary_sensor.XXXXXX_charger
     attribute: charging_state
     from: "Off"
     to: "On"
 condition:
   - condition: state
-    entity_id: device_tracker.teslamovil_location_tracker
+    entity_id: device_tracker.XXXXXX_location_tracker
     state: Azucaque
   - condition: state
-    entity_id: binary_sensor.teslamovil_charger
+    entity_id: binary_sensor.XXXXXX_charger
     state: "on"
   - condition: state
     entity_id: switch.followthesun
@@ -26,7 +26,7 @@ condition:
 action:
   - if:
       - condition: numeric_state
-        entity_id: sensor.amperios_carga
+        entity_id: sensor.amperios_carga_kiosk
         above: 0
         below: 13
     then:
