@@ -3,7 +3,7 @@ description: ""
 trigger:
   - platform: state
     entity_id:
-      - sensor.amperios_carga_kiosk
+      - sensor.charging_amps_kiosk
   - platform: state
     entity_id:
       - switch.followthesun
@@ -26,7 +26,7 @@ condition:
 action:
   - if:
       - condition: numeric_state
-        entity_id: sensor.amperios_carga_kiosk
+        entity_id:sensor.charging_amps_kiosk
         above: 0
         below: 13
     then:
@@ -37,7 +37,7 @@ action:
           parameters:
             path_vars:
               vehicle_id: "{{ state_attr('binary_sensor.XXXXX_online', 'id') }}"
-            charging_amps: "{{ states('sensor.amperios_carga') }}"
+            charging_amps: "{{ states('sensor.charging_amps_kiosk') }}"
         enabled: true
       - service: button.press
         data: {}
