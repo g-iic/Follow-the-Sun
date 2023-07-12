@@ -36,7 +36,7 @@ action:
           command: CHARGING_AMPS
           parameters:
             path_vars:
-              vehicle_id: "{{ state_attr('binary_sensor.XXXXX_online', 'id') }}"
+              vehicle_id: "{{ state_attr('binary_sensor.XXXXXX_online', 'id') }}"
             charging_amps: "{{ states('sensor.charging_amps_kiosk') }}"
         enabled: true
       - service: button.press
@@ -47,5 +47,5 @@ action:
       - service: switch.turn_off
         data: {}
         target:
-          entity_id: switch.XXXXX_charger
+          entity_id: switch.XXXXXX_charger
 mode: single
