@@ -7,5 +7,8 @@ Here we describe the use of the second alternative.
 The steps are the following:
 1.- Install using HACS the Home Assistant FusionSolar Integration.
 2.- Create a sensor in configuration.yaml adding the lines included in the file configuration.yaml of this repository after changing the XXXXXXXXXX in 'sensor.XXXXXXXXXX_realtime_power' with the code given by the FusionSolar Integration. After reload the configuration.yaml a new entity called sensor.charging_amps_kiosk must be visible. Create a switch as is also described that will be used to control the automation. 
-3.- Install using HACS the Tesla integration
-4.- Create a HA automation as described in the file charging_automation.yaml. 
+3.- Create a switch to control the automation using
+4.- Install using HACS the Tesla integration
+5.- Create a HA automation as described in the file charging_automation.yaml. The automation have three triggers. If sensor.charging_amps_kiosk value changes or the switch.followthesun changes to "On" or binary_sensor.XXXXXX_charger changes from "Off" to "On"
+
+
