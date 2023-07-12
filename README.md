@@ -6,6 +6,8 @@ The firts way, provides production information almost instantaneusly and can be 
 Here we describe the use of the second alternative. 
 The steps are the following.
 1.- Install using HACS the Home Assistant FusionSolar Integration
-2.- Create a sensor in configuration.yaml
+2.- Create a sensor in configuration.yaml adding the lines included in the file configuration.yaml of this repository
+    
+3.-
 3.- Install using HACS the Tesla integration
 4.- Create a HA automation
