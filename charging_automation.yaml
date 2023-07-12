@@ -16,7 +16,7 @@ trigger:
 condition:
   - condition: state
     entity_id: device_tracker.XXXXXX_location_tracker
-    state: Azucaque
+    state: HOMELOCATION
   - condition: state
     entity_id: binary_sensor.XXXXXX_charger
     state: "on"
