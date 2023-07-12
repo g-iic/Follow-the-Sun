@@ -32,20 +32,20 @@ action:
     then:
       - service: tesla_custom.api
         data:
-          email: contacto@ignacio.xyz
+          email: EMAIL
           command: CHARGING_AMPS
           parameters:
             path_vars:
-              vehicle_id: "{{ state_attr('binary_sensor.teslamovil_online', 'id') }}"
+              vehicle_id: "{{ state_attr('binary_sensor.XXXXX_online', 'id') }}"
             charging_amps: "{{ states('sensor.amperios_carga') }}"
         enabled: true
       - service: button.press
         data: {}
         target:
-          entity_id: button.teslamovil_force_data_update
+          entity_id: button.XXXXXX_force_data_update
     else:
       - service: switch.turn_off
         data: {}
         target:
-          entity_id: switch.teslamovil_charger
+          entity_id: switch.XXXXX_charger
 mode: single
