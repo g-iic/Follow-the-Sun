@@ -1,1 +1,16 @@
-
+square: false
+type: grid
+cards:
+  - show_name: true
+    show_icon: true
+    type: button
+    tap_action:
+      action: toggle
+    entity: switch.followthesun
+    icon: mdi:white-balance-sunny
+    name: Follow the sun?
+  - type: history-graph
+    entities:
+      - entity: number.XXXXXXX_charging_amps
+    hours_to_show: 4
+columns: 1
