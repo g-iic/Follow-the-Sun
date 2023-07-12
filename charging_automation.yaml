@@ -1,0 +1,51 @@
+alias: TESLA ADAPTATIVE CHARGING OFF IF 0
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - sensor.amperios_carga
+  - platform: state
+    entity_id:
+      - switch.followthesun
+  - platform: state
+    entity_id:
+      - binary_sensor.teslamovil_charger
+    attribute: charging_state
+    from: "Off"
+    to: "On"
+condition:
+  - condition: state
+    entity_id: device_tracker.teslamovil_location_tracker
+    state: Azucaque
+  - condition: state
+    entity_id: binary_sensor.teslamovil_charger
+    state: "on"
+  - condition: state
+    entity_id: switch.followthesun
+    state: "on"
+action:
+  - if:
+      - condition: numeric_state
+        entity_id: sensor.amperios_carga
+        above: 0
+        below: 13
+    then:
+      - service: tesla_custom.api
+        data:
+          email: contacto@ignacio.xyz
+          command: CHARGING_AMPS
+          parameters:
+            path_vars:
+              vehicle_id: "{{ state_attr('binary_sensor.teslamovil_online', 'id') }}"
+            charging_amps: "{{ states('sensor.amperios_carga') }}"
+        enabled: true
+      - service: button.press
+        data: {}
+        target:
+          entity_id: button.teslamovil_force_data_update
+    else:
+      - service: switch.turn_off
+        data: {}
+        target:
+          entity_id: switch.teslamovil_charger
+mode: single
